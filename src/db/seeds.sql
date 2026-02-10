@@ -1,0 +1,1 @@
+INSERT INTO genres (genre) VALUES ('Fiction'), ('Self-help');
