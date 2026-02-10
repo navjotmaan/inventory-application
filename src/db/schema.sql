@@ -3,17 +3,17 @@ DROP TABLE IF EXISTS genres;
 DROP TABLE IF EXISTS books;
 
 CREATE TABLE IF NOT EXISTS writers(
-    writer_id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     writer_name TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS genres(
-    genre_id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     genre TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS books (
-    book_id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     writer_id INTEGER NOT NULL,
     genre_id INTEGER NOT NULL,
     title TEXT NOT NULL,
