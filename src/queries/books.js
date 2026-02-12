@@ -1,7 +1,7 @@
 const pool = require('../config/database');
 
 async function createBook(title, price, rating, genre_id, writer_id) {
-    await pool.query(`INSERT INTO books (title, price, rating, genre_id, writer_id) VALUES ($1, $2, $3, $4)`, 
+    await pool.query(`INSERT INTO books (title, price, rating, genre_id, writer_id) VALUES ($1, $2, $3, $4, $5)`, 
                     [title, price, rating, genre_id, writer_id]);
 }
 
