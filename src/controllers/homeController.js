@@ -9,4 +9,17 @@ async function getAllGenres(req, res) {
     }
 }
 
-module.exports = { getAllGenres };
+async function addGenre(req, res) {
+    try {
+        await db.insertGenres(req.body.genre);
+        res.redirect('/');
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Error saving genre");
+    }
+}
+
+module.exports = { 
+    getAllGenres,
+    addGenre
+};
