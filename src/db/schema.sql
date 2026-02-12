@@ -1,6 +1,6 @@
+DROP TABLE IF EXISTS books;
 DROP TABLE IF EXISTS writers;
 DROP TABLE IF EXISTS genres;
-DROP TABLE IF EXISTS books;
 
 CREATE TABLE IF NOT EXISTS writers(
     id SERIAL PRIMARY KEY,
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS books (
     price NUMERIC(10, 2) NOT NULL CHECK (price >= 0),
     rating INTEGER CHECK (rating >= 1 AND rating <= 5),
 
-    FOREIGN KEY (writer_id) REFERENCES writers (writer_id) ON DELETE RESTRICT,
-    FOREIGN KEY (genre_id) REFERENCES genres (genre_id) ON DELETE RESTRICT
+    FOREIGN KEY (writer_id) REFERENCES writers (id) ON DELETE RESTRICT,
+    FOREIGN KEY (genre_id) REFERENCES genres (id) ON DELETE RESTRICT
 );
 
