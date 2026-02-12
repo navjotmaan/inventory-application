@@ -9,8 +9,10 @@ const public = path.join(__dirname, 'public');
 app.use(express.static(public));
 
 const homeRouter = require('./src/routes/homeRoute');
+const booksRouter = require('./src/routes/booksRoute');
 
 app.use('/', homeRouter);
+app.use('/genre', booksRouter);
 
 const PORT = process.env.PORT || 3000
 
