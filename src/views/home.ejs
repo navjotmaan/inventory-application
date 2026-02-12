@@ -9,9 +9,11 @@
 <body>
     <main class="container">
         <% genres.forEach((genre) => { %>
-            <div class="card">
-                <p><%= genre.genre %></p>
-            </div>
+            <a href="/genre/<%= genre.id %>">
+                <div class="card">
+                    <p><%= genre.genre %></p>
+                </div>
+            </a>
         <% }); %>
     </main>
 </body>
