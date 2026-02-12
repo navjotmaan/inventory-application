@@ -7,6 +7,22 @@
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+    <form method="post">
+        <label for="title">Title: </label>
+        <input name="title" id="title" />
+
+        <label for="writer">Writer: </label>
+        <input name="writer" id="writer" type="text" />
+
+        <label for="price">Price: </label>
+        <input name="price" id="price" type="number" />
+
+        <label for="rating">Rating: </label>
+        <input name="rating" id="rating" type="number" />
+
+        <button>Add</button>
+    </form>
+
     <div>
         <% books.forEach((book) => { %>
             <div class="book-card">
