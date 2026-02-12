@@ -7,10 +7,15 @@
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+    <header>
+        <h1>Welcome to our Book Store</h1>
+        <p>Choose your favorite genres and books and dive into a new world!</p>
+    </header>
+    
     <main class="container">
         <% genres.forEach((genre) => { %>
             <a href="/genre/<%= genre.id %>">
-                <div class="card">
+                <div class="genre-card">
                     <p><%= genre.genre %></p>
                 </div>
             </a>
