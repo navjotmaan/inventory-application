@@ -23,7 +23,7 @@
         <button>Add</button>
     </form>
 
-    <div>
+    <main class="container">
         <% books.forEach((book) => { %>
             <div class="book-card">
                 <p><%= book.title %></p>
@@ -32,6 +32,6 @@
                 <p>Rating: <%= book.rating %></p>
             </div>
         <% }) %>
-    </div>
+    </main>
 </body>
 </html>
