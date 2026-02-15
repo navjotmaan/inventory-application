@@ -14,17 +14,50 @@
 
     <form method="post">
         <input name="genre" id="genre" placeholder="Add Genre" />
-        <button>Add</button>
+        <button type="submit">Add</button>
     </form>
     
     <main class="container">
         <% genres.forEach((genre) => { %>
-            <a href="/genre/<%= genre.id %>">
-                <div class="genre-card">
-                    <p><%= genre.genre %></p>
-                </div>
-            </a>
+            <div class="genre-card" data-href="/genre/<%= genre.id %>">
+                <div>
+                    <a href="/genre/update">
+                        <img src="/icons/edit.png" alt="edit" height="20px" class="edit-btn" data-id="<%= genre.id %>" data-genre="<%= genre.genre %>">
+                    </a>
+                    <a href="/genre/delete">
+                        <img src="/icons/delete.png" alt="delete" height="20px" class="delete-btn" data-id="<%= genre.id %>">
+                    </a>
+                </div> 
+                <p><%= genre.genre %></p>
+            </div>
         <% }); %>
     </main>
+
+    <dialog id="editDialog">
+        <form id="editForm" method="post" action="/genre/update">
+            <h3>Edit Genre</h3>
+            <input type="hidden" name="id" id="editId">
+            <input type="text" name="genre" id="editGenre" placeholder="Genre name" required>
+            <div class="dialog-buttons">
+                <button type="submit">Update</button>
+                <button type="button" id="edit-cancel">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog id="deleteDialog">
+        <form id="deleteForm" method="post" action="/genre/delete">
+            <h3>Delete Genre</h3>
+            <input type="hidden" name="id" id="deleteId">
+            <p>Are you sure you want to delete this genre and all its books?</p>
+            <div class="dialog-buttons">
+                <button type="submit">Yes</button>
+                <button type="button" id="delete-cancel">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script src="homePopup.js"></script>
+
 </body>
 </html>
