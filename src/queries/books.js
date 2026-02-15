@@ -13,7 +13,12 @@ async function getAllBooks(id) {
     return rows;
 }
 
+async function deleteAllBooks(id) {
+    await pool.query("DELETE FROM books WHERE genre_id = $1", [id]);
+}
+
 module.exports = {
     createBook,
-    getAllBooks
+    getAllBooks,
+    deleteAllBooks
 };
