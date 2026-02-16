@@ -1,22 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playwrite+CU+Guides&family=Playwrite+NZ+Basic+Guides&family=Playwrite+NZ+Basic:wght@100..400&family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
 body {
+    min-height: 100%;
+    font-family: 'Playwrite NZ Basic', sans-serif;
     text-align: center;
+    background-color: #F2F2F0;
+}
+
+.homepage {
+    position: relative;
+    min-height: 100vh;
+    padding: 30px 0;
+    overflow: hidden;
+    color: white;
+}
+
+.homepage::before {
+    content: "";
+    position: absolute;
+    top: -10px;     
+    left: -10px;    
+    right: -10px;    
+    bottom: -10px;   
+    width: calc(100% + 20px);  
+    height: calc(100% + 20px);
+    background-image: url('../images/bookstore.jpg');
+    background-color: #2B292C;
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+    filter: blur(2px);
 }
 
 .container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin: 50px 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin: 80px 20px;
+}
+
+.icons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.genre-name {
+    font-family: "Playwrite NZ Basic Guides", cursive;
+    font-weight: 400;
+    font-size: 38px;
+    margin-top: 20px;
 }
 
 .genre-card,
 .book-card {
-    border: 1px solid black;
+    cursor: pointer;
+    min-width: 350px;
+    min-height: 200px;
+    border-radius: 20px;
+    background-color: #8C6B42;
+    color: white;
+}
+
+.edit-btn, .delete-btn {
+    filter: brightness(0) invert(1);
+}
+
+#genre, #addGenre {
+    border: none;
+    border-radius: 8px;
+}
+
+#genre {
+    padding: 5px 30px;
+}
+
+#addGenre {
+    padding: 5px 10px;
+    background-color: #BFA07A;
+    color: white;
+    font-weight: bold;
     cursor: pointer;
 }
 
+#addGenre:hover {
+    background-color: #8C6B42;
+}
+
+h1 {
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
 header {
-    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+header p {
+    font-size: 20px;
 }
 
 a {
@@ -30,6 +125,8 @@ dialog {
     width: 90%;
     max-width: 400px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #F2F2F0;
+    margin: auto;
 }
 
 dialog::backdrop {
@@ -55,6 +152,7 @@ dialog h3 {
     display: flex;
     gap: 10px;
     justify-content: flex-end;
+    margin-top: 15px;
 }
 
 .dialog-buttons button {
