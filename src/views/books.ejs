@@ -7,31 +7,71 @@
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <form method="post">
-        <label for="title">Title: </label>
-        <input name="title" id="title" />
 
-        <label for="writer">Writer: </label>
-        <input name="writer" id="writer" type="text" />
+    <button type="button" id="addBook-btn" class="add-btn">Add New Book</button>
 
-        <label for="price">Price: </label>
-        <input name="price" id="price" type="number" />
+    <dialog id="addBook">
+        <form class="dialogForm" id="addBookForm" method="post">
+            <span>
+                <label for="title">Title: </label>
+                <input name="title" id="title" />
+            </span>
 
-        <label for="rating">Rating: </label>
-        <input name="rating" id="rating" type="number" />
+            <span>
+                <label for="writer">Writer: </label>
+                <input name="writer" id="writer" type="text" />
+            </span>
 
-        <button>Add</button>
-    </form>
+            <span>
+                <label for="price">Price: </label>
+                <input name="price" id="price" type="number" />
+            </span>
+
+            <span>
+                <label for="rating">Rating: </label>
+                <input name="rating" id="rating" type="number" />
+            </span>
+
+            <div class="dialog-buttons">
+                <button type="submit">Add</button>
+                <button type="button" id="cancel">Cancel</button>
+            </div>
+        </form>
+    </dialog>
 
     <main class="container">
+        
+        <% if (books.length === 0) { %>
+            <p>Currently, this genre is empty. Click the button to add books.</p>
+        <% } %>
+        
         <% books.forEach((book) => { %>
             <div class="book-card">
-                <p><%= book.title %></p>
-                <p><%= book.writer_name %></p>
+                <div class="icons">
+                    <img src="/icons/edit.png" alt="edit" height="20px" class="edit-btn" >
+                    <img src="/icons/delete.png" alt="delete" height="20px" class="delete-btn" data-id="<%= book.id %>" data-genre="<%= book.genre_id %>">
+                </div>
+                <p><strong><%= book.title %></strong></p>
+                <p>by <b><%= book.writer_name %></b></p>
                 <p>$<%= book.price %></p>
                 <p>Rating: <%= book.rating %></p>
             </div>
         <% }) %>
     </main>
+
+    <dialog id="deletebook">
+        <form class="dialogForm" id="deleteBookForm" method="post">
+            <h3>Delete Book</h3>
+            <input type="hidden" name="id" id="deleteBookId">
+            <p>Are you sure you want to delete this book?</p>
+            <div class="dialog-buttons">
+                <button type="submit">Yes</button>
+                <button type="button" id="deleteBookCancel">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script src="/booksPopup.js"></script>
+
 </body>
 </html>
