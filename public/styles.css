@@ -63,7 +63,7 @@ body {
     font-family: "Playwrite NZ Basic Guides", cursive;
     font-weight: 400;
     font-size: 38px;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .genre-card,
@@ -80,7 +80,7 @@ body {
     filter: brightness(0) invert(1);
 }
 
-#genre, #addGenre {
+#genre, .add-btn {
     border: none;
     border-radius: 8px;
 }
@@ -89,7 +89,7 @@ body {
     padding: 5px 30px;
 }
 
-#addGenre {
+.add-btn {
     padding: 5px 10px;
     background-color: #BFA07A;
     color: white;
@@ -97,8 +97,28 @@ body {
     cursor: pointer;
 }
 
-#addGenre:hover {
+.add-btn:hover {
     background-color: #8C6B42;
+}
+
+#addBook-btn {
+    padding: 10px 20px;
+    margin-top: 20px;
+}
+
+span {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+span label {
+    width: 100px;
+    text-align: left;
+}
+
+span input {
+    flex: 1;
+    max-width: 300px;
 }
 
 h1 {
@@ -121,12 +141,15 @@ a {
 dialog {
     border: none;
     border-radius: 8px;
-    padding: 30px;
     width: 90%;
     max-width: 400px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: #F2F2F0;
     margin: auto;
+}
+
+.dialogForm {
+    padding: 30px;
 }
 
 dialog::backdrop {
@@ -174,4 +197,8 @@ dialog h3 {
     color: white;
 }
 
-
+#addBookForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
