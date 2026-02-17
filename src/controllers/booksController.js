@@ -3,7 +3,7 @@ const writerdb = require('../queries/writers');
 
 async function getAllBooks(req, res) {
     const id = req.params.id; 
-
+    
     try {
         const books = await db.getAllBooks(id);
         res.render('books', { title: 'Book Store', books});
@@ -17,7 +17,7 @@ async function addBook(req, res) {
     try {
         const writerId = await writerdb.insertWriter(req.body.writer);
         await db.createBook(req.body.title, req.body.price, req.body.rating, req.params.id, writerId);
-        res.redirect(`/genre/${req.params.id}`);
+        res.redirect(`/books/${req.params.id}`);
         
     } catch (err) {
         console.error(err);
@@ -25,7 +25,20 @@ async function addBook(req, res) {
     }
 }
 
+async function deleteBook(req, res) {
+    const { id, bookId } = req.params; 
+    
+    try {
+        await db.deleteBookById(bookId);
+        res.redirect(`/books/${id}`);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Error deleting book");
+    }
+}
+
 module.exports = { 
     getAllBooks,
-    addBook
+    addBook,
+    deleteBook
 };
