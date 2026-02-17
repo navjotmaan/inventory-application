@@ -6,7 +6,7 @@ async function createBook(title, price, rating, genre_id, writer_id) {
 }
 
 async function getAllBooks(id) {
-    const { rows } = await pool.query(`SELECT books.id, books.title, books.price, books.rating, writers.writer_name, genres.genre FROM books
+    const { rows } = await pool.query(`SELECT books.id, books.title, books.price, books.rating, books.genre_id, writers.writer_name, genres.genre FROM books
                                     JOIN writers ON books.writer_id = writers.id 
                                     JOIN genres ON books.genre_id = genres.id
                                     WHERE genre_id = $1`, [id]);
@@ -17,8 +17,13 @@ async function deleteAllBooks(id) {
     await pool.query("DELETE FROM books WHERE genre_id = $1", [id]);
 }
 
+async function deleteBookById(id) {
+    await pool.query("DELETE FROM books WHERE id = $1", [id]);
+}
+
 module.exports = {
     createBook,
     getAllBooks,
-    deleteAllBooks
+    deleteAllBooks,
+    deleteBookById
 };
