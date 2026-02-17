@@ -1,11 +1,3 @@
-// Genre card path
-
-document.querySelectorAll('.genre-card').forEach(card => {
-    card.addEventListener('click', function() {
-        window.location.href = this.dataset.href;
-    });
-});
-
 // Edit genre popup
 
 const editDialog = document.getElementById('editDialog');
