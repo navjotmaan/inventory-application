@@ -14,7 +14,7 @@ const homeRouter = require('./src/routes/homeRoute');
 const booksRouter = require('./src/routes/booksRoute');
 
 app.use('/', homeRouter);
-app.use('/genre', booksRouter);
+app.use('/books', booksRouter);
 
 const PORT = process.env.PORT || 3000
 
