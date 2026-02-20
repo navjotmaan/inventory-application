@@ -4,7 +4,6 @@ const dialog = document.getElementById('addBook');
 const addBtn = document.querySelector('.add-btn');
 const cancel = document.getElementById('cancel');
 const addBookForm = document.getElementById('addBookForm');
-const submitBtn = document.getElementById('submitBtn');
 
 addBtn.addEventListener('click', () => {
     dialog.showModal();
