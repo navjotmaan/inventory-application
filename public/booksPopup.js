@@ -1,14 +1,15 @@
 // add book popup
 
 const dialog = document.getElementById('addBook');
-const btn = document.querySelector('.add-btn');
+const addBtn = document.querySelector('.add-btn');
 const cancel = document.getElementById('cancel');
 const addBookForm = document.getElementById('addBookForm');
+const submitBtn = document.getElementById('submitBtn');
 
-btn.addEventListener('click', () => {
+addBtn.addEventListener('click', () => {
     dialog.showModal();
 });
-
+    
 cancel.addEventListener('click', () => {
     dialog.close();
 });
@@ -22,6 +23,51 @@ dialog.addEventListener('click', (e) => {
 addBookForm.addEventListener('submit', () => {
     dialog.close();
 });
+
+// Update book popup
+
+const updateDialog = document.getElementById('update-book');
+const updateForm = document.getElementById('update-book-form');
+const updateButtons = document.querySelectorAll('.edit-btn');
+const updateCancel = document.getElementById('update-book-cancel');
+const idInput = document.getElementById('edit-book-id');
+const priceInput = document.getElementById('update-price');
+const ratingInput = document.getElementById('update-rating');
+
+updateButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const bookId = btn.getAttribute('data-id');
+        const genreId = btn.getAttribute('data-genre');
+        const price = btn.getAttribute('data-price');
+        const rating = btn.getAttribute('data-rating');
+
+        updateForm.action = `/books/${genreId}/${bookId}/update`;
+
+        idInput.value = bookId;
+        priceInput.value = price;
+        ratingInput.value = rating;
+
+        updateDialog.showModal();
+    }); 
+});
+
+updateCancel.addEventListener('click', () => {
+    updateDialog.close();
+});
+
+updateDialog.addEventListener('click', (e) => {
+    if (e.target === updateDialog) {
+        updateDialog.close();
+    }
+});
+
+updateForm.addEventListener('submit', () => {
+    updateDialog.close();
+});
+
 
 // Delete book popup
 
