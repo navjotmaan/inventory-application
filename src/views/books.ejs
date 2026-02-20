@@ -11,25 +11,25 @@
     <button type="button" id="addBook-btn" class="add-btn">Add New Book</button>
 
     <dialog id="addBook">
-        <form class="dialogForm" id="addBookForm" method="post">
-            <span>
+        <form class="dialogForm book-form" id="addBookForm" method="post">
+            <span id="title-area">
                 <label for="title">Title: </label>
-                <input name="title" id="title" />
+                <input name="title" id="title" required />
             </span>
 
-            <span>
+            <span id="writer-area">
                 <label for="writer">Writer: </label>
-                <input name="writer" id="writer" type="text" />
+                <input name="writer" id="writer" type="text" required />
             </span>
 
             <span>
                 <label for="price">Price: </label>
-                <input name="price" id="price" type="number" />
+                <input name="price" id="price" type="number" required />
             </span>
 
             <span>
                 <label for="rating">Rating: </label>
-                <input name="rating" id="rating" type="number" />
+                <input name="rating" id="rating" type="number" required />
             </span>
 
             <div class="dialog-buttons">
@@ -48,7 +48,8 @@
         <% books.forEach((book) => { %>
             <div class="book-card">
                 <div class="icons">
-                    <img src="/icons/edit.png" alt="edit" height="20px" class="edit-btn" >
+                    <img src="/icons/edit.png" alt="edit" height="20px" class="edit-btn" 
+                        data-id="<%= book.id %>" data-price="<%= book.price %>" data-rating="<%= book.rating %>" data-genre="<%= book.genre_id %>" >
                     <img src="/icons/delete.png" alt="delete" height="20px" class="delete-btn" data-id="<%= book.id %>" data-genre="<%= book.genre_id %>">
                 </div>
                 <p><strong><%= book.title %></strong></p>
@@ -58,6 +59,27 @@
             </div>
         <% }) %>
     </main>
+
+    <dialog id="update-book">
+        <form class="dialogForm book-form" id="update-book-form" method="post">
+            <h3>Edit book info</h3>
+            <input type="hidden" name="id" id="edit-book-id">
+            <span>
+                <label for="price">Price: </label>
+                <input name="price" id="update-price" type="number" required />
+            </span>
+
+            <span>
+                <label for="rating">Rating: </label>
+                <input name="rating" id="update-rating" type="number" required />
+            </span>
+
+            <div class="dialog-buttons">
+                <button type="submit">Update</button>
+                <button type="button" id="update-book-cancel">Cancel</button>
+            </div>
+        </form>
+    </dialog>
 
     <dialog id="deletebook">
         <form class="dialogForm" id="deleteBookForm" method="post">
