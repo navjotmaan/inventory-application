@@ -25,6 +25,22 @@ async function addBook(req, res) {
     }
 }
 
+async function updateBook(req, res) {
+    const id = req.params.id;
+
+    const bookId = req.body.id;     
+    const price = req.body.price;   
+    const rating = req.body.rating;
+
+    try {
+        await db.updateBookById(bookId, price, rating);
+        res.redirect(`/books/${id}`);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Error updating book");
+    }
+}
+
 async function deleteBook(req, res) {
     const { id, bookId } = req.params; 
     
@@ -40,5 +56,6 @@ async function deleteBook(req, res) {
 module.exports = { 
     getAllBooks,
     addBook,
-    deleteBook
+    deleteBook,
+    updateBook
 };
