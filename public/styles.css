@@ -63,7 +63,7 @@ body {
     font-family: "Playwrite NZ Basic Guides", cursive;
     font-weight: 400;
     font-size: 38px;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .genre-card,
@@ -74,6 +74,7 @@ body {
     border-radius: 20px;
     background-color: #8C6B42;
     color: white;
+    line-height: 2;
 }
 
 .edit-btn, .delete-btn {
@@ -197,7 +198,7 @@ dialog h3 {
     color: white;
 }
 
-#addBookForm {
+.book-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
